@@ -5,14 +5,14 @@ from collections import Counter
 user_login = getpass.getuser()
 
 
-def bash_history():
+def zsh_history():
     if platform == 'linux':
         zsh_file = f"/home/{user_login}/.zsh_history"
     if platform == 'darwin':
         zsh_file = f"/users/{user_login}/.zsh_history"
     values = []
     try:
-        with open(zsh_file) as z:
+        with open(zsh_file, encoding="ISO-8859-15") as z:
             for i in z.read().splitlines():
                 if i and re.sub(r'^.*?;', ';', i)[0] == ';':
                     values.append(re.sub(r'^.*?;', ';', i)[1:])
@@ -28,4 +28,4 @@ def bash_history():
             print(f"{k}, \033[1m{v} times\033[0m")
 
 
-bash_history()
+zsh_history()
