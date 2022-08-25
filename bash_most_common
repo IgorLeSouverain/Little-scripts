@@ -12,7 +12,7 @@ def bash_history():
         bash_file = f"/users/{user_login}/.bash_history"
     values = []
     try:
-        with open(bash_file) as b:
+        with open(bash_file, encoding="ISO-8859-15") as b:
             for line in b.read().splitlines():
                 values.append(line)
     except FileNotFoundError:
