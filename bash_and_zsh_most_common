@@ -5,7 +5,7 @@ from collections import Counter
 user_login = getpass.getuser()
 
 
-def bash_history():
+def zsh_bash_history():
     if platform == 'linux':
         bash_file = f"/home/{user_login}/.bash_history"
         zsh_file = f"/home/{user_login}/.zsh_history"
@@ -14,7 +14,7 @@ def bash_history():
         zsh_file = f"/users/{user_login}/.zsh_history"
     values = []
     try:
-        with open(bash_file) as b, open(zsh_file) as z:
+        with open(bash_file, encoding="ISO-8859-15") as b, open(zsh_file, encoding="ISO-8859-15") as z:
             for line in b.read().splitlines():
                 values.append(line)
             for line in z.read().splitlines():
@@ -36,5 +36,5 @@ def bash_history():
             print(f"{k}, \033[1m{v} times\033[0m")
 
 
-bash_history()
+zsh_bash_history()
 
