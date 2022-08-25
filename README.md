@@ -1,4 +1,4 @@
-# Python-and-bash-scripts
+# Python scripts
 A little repository for little scripts
 
 Lists most used command you put in terminal, works with bash and zsh
