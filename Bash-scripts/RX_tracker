@@ -1,4 +1,11 @@
-#! /usr/bin/env bash
-clear
+#! /bin/bash
+result=0
 
-echo 
+while read line; do
+
+    line=${line##*bytes}  # Remove everything up to bytes.
+    line=${line%(*}       # Remove everything starting from (.
+    
+    (( result+=line ))
+done < <(ifconfig | grep "RX packets")
+echo $result
