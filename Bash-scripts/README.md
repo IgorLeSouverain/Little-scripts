@@ -1,4 +1,6 @@
 # Bash-scripts
 A little repository for little bash scripts
 
-27.08 added bash_most_common script that counts most common bash commands from your bash history file
+RX_tracker prints how much GB you spent in one session
+
+bash_most_common counts most common bash commands from your bash history file
