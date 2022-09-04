@@ -11,10 +11,10 @@ done < <(ifconfig | grep "RX packets")
 
 echo $result 'bytes'
 
-mb="$(echo "scale=2; "${result}"/1000000" | bc)"
+mb="$(echo "scale=2; "${result}"/1000000" | bc)"       # Converting to MB
 
 echo "$mb" 'MB'
 
-gb="$(echo "scale=2; "${result}"/1000000/1000" | bc)"
+gb="$(echo "scale=2; "${result}"/1000000/1000" | bc)"  # Converting to GB
 
 echo "$gb" 'GB'
