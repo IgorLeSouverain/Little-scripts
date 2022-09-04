@@ -8,4 +8,13 @@ while read line; do
     
     (( result+=line ))
 done < <(ifconfig | grep "RX packets")
-echo $result
+
+echo $result 'bytes'
+
+mb="$(echo "scale=2; "${result}"/1000000" | bc)"
+
+echo "$mb" 'MB'
+
+gb="$(echo "scale=2; "${result}"/1000000/1000" | bc)"
+
+echo "$gb" 'GB'
