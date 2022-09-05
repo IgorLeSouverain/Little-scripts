@@ -22,7 +22,9 @@ sudo apt install git -y
 
 sudo apt install curl -y
 
-sudo apr install net-tools -y
+sudo apt install net-tools -y
+
+sudo apt install htop -y
 
 #######################
 
