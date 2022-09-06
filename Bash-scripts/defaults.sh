@@ -6,7 +6,7 @@ clear
 
 apt update -y
 
-read -p 'Do you want to upgrade?: ' $answer
+read -p 'Do you want to upgrade?: ' answer
 
 if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
