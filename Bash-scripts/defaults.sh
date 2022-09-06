@@ -6,11 +6,15 @@ clear
 
 sudo apt update -y
 
-read -p 'Do you want to upgrade?: ' answer
+read -p 'Do you want to upgrade? [Y/N]: ' answer
 
 if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
 	sudo apt upgrade -y
+
+else
+
+	:
 
 fi
 
@@ -35,8 +39,15 @@ sudo apt install vim -y
 mkdir ~/.vim/
 mkdir ~/.vim/colors
 
-wget https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim -P ~/.vim/colors/ 
+if [[ ! -e ~/.vim/colors/gruvbox.vim ]]; then
 
+ wget https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim -P ~/.vim/colors/ 
+
+else
+
+	:
+
+fi
 
 echo "set number				 
 set relativenumber				 
@@ -56,7 +67,9 @@ colorscheme gruvbox" > ~/.vimrc
 
 sudo apt install zsh -y
 
+
 sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
 
 sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="darkblood"/g' ~/.zshrc
 
@@ -68,6 +81,10 @@ if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
 	sudo apt autoremove
 
+else
+
+	:
+
 fi
 
 
@@ -76,5 +93,9 @@ read -p "Reboot needed, reboot? [Y/N]: " answer
 if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
 	reboot
+
+else
+
+	:
 
 fi
