@@ -4,7 +4,7 @@ clear
 
 ###  update-upgrade ###
 
-apt update -y
+sudo apt update -y
 
 read -p 'Do you want to upgrade?: ' answer
 
@@ -30,7 +30,7 @@ sudo apt install htop -y
 
 ########  vim  ########
 
-apt install vim -y
+sudo apt install vim -y
 
 mkdir ~/.vim/
 mkdir ~/.vim/colors
@@ -61,6 +61,15 @@ sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tool
 sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="darkblood"/g' ~/.zshrc
 
 #######################
+
+read -p "Auto-remove unnecessary? [Y/N]: " answer
+
+if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
+
+	sudo apt autoremove
+
+fi
+
 
 read -p "Reboot needed, reboot? [Y/N]: " answer
 
