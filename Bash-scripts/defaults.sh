@@ -22,13 +22,7 @@ fi
 
 #######  tools  #######
 
-sudo apt install git -y
-
-sudo apt install curl -y
-
-sudo apt install net-tools -y
-
-sudo apt install htop -y
+sudo apt install git curl net-tools htop -y
 
 #######################
 
