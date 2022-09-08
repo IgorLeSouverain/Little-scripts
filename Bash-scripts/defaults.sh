@@ -30,8 +30,7 @@ sudo apt install git curl net-tools htop -y
 
 sudo apt install vim -y
 
-mkdir ~/.vim/
-mkdir ~/.vim/colors
+mkdir ~/.vim/ ~/.vim/colors
 
 if [[ ! -e ~/.vim/colors/gruvbox.vim ]]; then
 
