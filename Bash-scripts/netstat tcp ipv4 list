@@ -1,0 +1,7 @@
+sudo netstat -anp \
+| awk '$1=="tcp" {print $5}' \
+| awk -F: '{print $1}' \
+| sort | uniq -c | sort -nr \
+| awk 'BEGIN {print "NN IP Count"}{n=n+$1; print FNR, $2, $1} \
+END {print "-", "SUM", n}' \
+| column -t
