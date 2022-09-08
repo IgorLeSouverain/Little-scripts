@@ -2,15 +2,25 @@
 
 clear
 
+if [[ -e "$(ls /etc | grep debian)" ]]; then
+
+	distribution='apt'
+
+else
+
+	distribution='yum'
+
+fi
+
 ###  update-upgrade ###
 
-sudo apt update -y
+sudo "$distribution" update -y
 
 read -p 'Do you want to upgrade? [Y/N]: ' answer
 
 if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
-	sudo apt upgrade -y
+	sudo "$distribution" upgrade -y
 
 else
 
@@ -22,19 +32,36 @@ fi
 
 #######  tools  #######
 
-sudo apt install git curl net-tools htop -y
+read -p 'Do you want to install tools? [Y/N]: ' answer
+
+if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
+
+	sudo "$distribution" install git curl net-tools htop -y
+
+else
+	:
+
+fi
 
 #######################
 
 ########  vim  ########
 
-sudo apt install vim -y
+read -p 'Do you want to install vim? [Y/N]: ' answer
 
+if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
+
+	sudo "$distribution" install vim -y
+
+else
+	:
+
+fi
 mkdir ~/.vim/ ~/.vim/colors
 
 if [[ ! -e ~/.vim/colors/gruvbox.vim ]]; then
 
- wget https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim -P ~/.vim/colors/ 
+	wget https://raw.githubusercontent.com/morhetz/gruvbox/master/colors/gruvbox.vim -P ~/.vim/colors/ 
 
 else
 
@@ -58,8 +85,17 @@ colorscheme gruvbox" > ~/.vimrc
 
 ########  zsh  ########
 
-sudo apt install zsh -y
+read -p 'Do you want to install zsh? [Y/N]: ' answer
 
+if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
+
+	sudo "$distribution" install zsh -y
+
+else
+
+	:
+
+fi
 
 sh -c "$(wget -qO- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
@@ -68,11 +104,11 @@ sed -i -e 's/ZSH_THEME="robbyrussell"/ZSH_THEME="darkblood"/g' ~/.zshrc
 
 #######################
 
-read -p "Auto-remove unnecessary? [Y/N]: " answer
+read -p 'Remove unnecessary packages? [Y/N]: ' answer
 
 if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
-	sudo apt autoremove
+	sudo "$distribution" autoremove
 
 else
 
@@ -81,7 +117,7 @@ else
 fi
 
 
-read -p "Reboot needed, reboot? [Y/N]: " answer
+read -p 'Reboot needed, reboot? [Y/N]: ' answer
 
 if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
