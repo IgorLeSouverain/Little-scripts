@@ -36,7 +36,7 @@ read -p 'Do you want to install tools? [Y/N]: ' answer
 
 if [[ "$answer" == 'y' || "$answer" == 'Y' ]]; then
 
-	sudo "$distribution" install git curl net-tools htop -y
+	sudo "$distribution" install git curl net-tools htop mtr -y
 
 else
 	:
