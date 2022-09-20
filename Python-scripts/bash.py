@@ -25,8 +25,7 @@ def bash_history():
             print(f"{k}, \033[1m{v} times\033[0m")
 
 
-start = time.time()
+
 bash_history()
-end = time.time()
-print(end - start)
+
 
