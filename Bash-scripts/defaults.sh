@@ -2,7 +2,7 @@
 
 clear
 
-if [[ -e "$(ls /etc | grep debian)" ]]; then
+if [[ -n "$(ls /etc | grep debian)" ]]; then
 
 	distribution='apt'
 
