@@ -90,6 +90,8 @@ sed -i 's/plugins=[^\]/plugins=(zsh-syntax-highlighting /g' "$HOME/.zshrc"
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 sed -i 's/plugins=[^\]/plugins=(zsh-autosuggestions /g' "$HOME/.zshrc"
 
+chsh -s $(which zsh)
+
 #######################
 
 read -p 'Remove unnecessary packages? [Y/N]: ' answer
